@@ -1,0 +1,51 @@
+﻿@page "/counter"
+
+@using CovidData.Web.Data
+
+@inject CovidDataService CovidDataService
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me times 2</button>
+
+@if (covidDatas == null)
+{
+<p><em>Loading...</em></p>
+}
+else
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var covidData in covidDatas)
+            {
+            <tr>
+                <td>@covidData.id</td>
+            </tr>
+            }
+    </tbody>
+</table>
+}
+
+@code {
+    private int currentCount = 0;
+
+    private IList<CovidData> covidDatas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        covidDatas = await CovidDataService.GetCovidData();
+
+    }
+
+    private void IncrementCount()
+    {
+        currentCount += 2;
+    }
+}
