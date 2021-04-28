@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Azure.Core;
 
 using CovidData.Web.Data;
 

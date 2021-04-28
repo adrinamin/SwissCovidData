@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 using Microsoft.Azure.Cosmos;
 
 namespace CovidData.Web.Data
@@ -12,8 +13,10 @@ namespace CovidData.Web.Data
         private readonly CosmosClient cosmosClient;
         public CovidDataService()
         {
-            this.cosmosClient = new CosmosClient("AccountEndpoint=https://covid-swissdata-db.documents.azure.com:443/;AccountKey=xT389nwdQL3ocDl5drKANgtUZKUneorhU9CSewQw43NW6yl0hfKg9s6K1xurVzFkt0BoXYg6ASX08XsNPMF2jQ==;");
-            
+            var client = new SecretClient(new Uri("https://swiss-covid-app-keyvault.vault.azure.net/"), new DefaultAzureCredential());
+
+            var secret = client.GetSecret("cosmosDBConnectionString");
+            this.cosmosClient = new CosmosClient(secret.Value.Value);
         }
 
         public async Task<IList<CovidData>> GetCovidData()
