@@ -4,11 +4,8 @@
 
 @inject CovidDataService CovidDataService
 
-<h1>Counter</h1>
-
-<p>Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me times 2</button>
+<h1>Covid-19 data</h1>
+<button>Hi</button>
 
 @if (covidDatas == null)
 {
@@ -27,6 +24,8 @@ else
             {
             <tr>
                 <td>@covidData.id</td>
+                <td>@covidData.datum</td>
+                <td>@covidData.geoRegion</td>
             </tr>
             }
     </tbody>
