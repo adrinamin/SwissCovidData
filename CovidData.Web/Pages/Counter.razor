@@ -1,11 +1,11 @@
-﻿@page "/counter"
+﻿@page "/covidData"
 
+@using CovidData.Entities
 @using CovidData.Web.Data
 
-@inject CovidDataService CovidDataService
+@inject CovidDataService covidDataService
 
 <h1>Covid-19 data</h1>
-<button>Hi</button>
 
 @if (covidDatas == null)
 {
@@ -17,6 +17,9 @@ else
     <thead>
         <tr>
             <th>Id</th>
+            <th>Sex</th>
+            <th>Date</th>
+            <th>Location</th>
         </tr>
     </thead>
     <tbody>
@@ -24,8 +27,9 @@ else
             {
             <tr>
                 <td>@covidData.id</td>
-                <td>@covidData.datum</td>
-                <td>@covidData.geoRegion</td>
+                <td>@covidData.sex</td>
+                <td>@covidData.date</td>
+                <td>@covidData.location</td>
             </tr>
             }
     </tbody>
@@ -35,11 +39,11 @@ else
 @code {
     private int currentCount = 0;
 
-    private IList<CovidData> covidDatas;
+    private IList<CovidInfection> covidDatas;
 
     protected override async Task OnInitializedAsync()
     {
-        covidDatas = await CovidDataService.GetCovidData();
+        covidDatas = await covidDataService.GetCovidData();
 
     }
 

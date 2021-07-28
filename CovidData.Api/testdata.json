@@ -1,0 +1,22 @@
+[
+  {
+    "sex": "male",
+    "location": "CH",
+    "date": 202009
+  },
+  {
+    "sex": "female",
+    "location": "CH",
+    "date": 202009
+  },
+  {
+    "sex": "unknown",
+    "location": "CH",
+    "date": 202009
+  },
+  {
+    "sex": "male",
+    "location": "CH",
+    "date": 202010
+  }
+]
