@@ -8,16 +8,16 @@ using Azure.Security.KeyVault.Secrets;
 using CovidData.Entities;
 
 using Microsoft.Azure.Cosmos;
+using Microsoft.Extensions.Configuration;
 
 namespace CovidData.Web.Data
 {
     public class CovidDataService
     {
-        private const string KeyVaultUriString = "https://swiss-covid-app-keyvault.vault.azure.net/";
         private readonly CosmosClient cosmosClient;
-        public CovidDataService()
+        public CovidDataService(IConfiguration configuration)
         {
-            SecretClient client = new(new Uri(KeyVaultUriString), new DefaultAzureCredential());
+            SecretClient client = new(new Uri(configuration["KeyVaultUri"]), new DefaultAzureCredential());
 
             var secret = client.GetSecret("cosmosDBConnectionString");
             this.cosmosClient = new CosmosClient(secret.Value.Value);
