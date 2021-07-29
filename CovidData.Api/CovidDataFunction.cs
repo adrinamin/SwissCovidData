@@ -50,8 +50,8 @@ namespace CovidData.Api
             return new OkObjectResult(covidInfections);
         }
 
-        [FunctionName("CreateCovidDataEntry")]
-        public static void CreateCovidDataEntry(
+        [FunctionName("AddNewCovidDataEntry")]
+        public static void AddNewCovidDataEntry(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "covid")] HttpRequest request,
             [CosmosDB(
                 databaseName: "covid-swissData-db",

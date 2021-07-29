@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovidData.Web", "CovidData.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovidData.Entities", "CovidData.Entities\CovidData.Entities.csproj", "{F2F56625-94AA-4A2B-8B29-CB72CAA8D259}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidData.Api", "CovidData.Api\CovidData.Api.csproj", "{BB2C3227-38A1-49F2-AE6A-A09A6C46CCD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovidData.Api", "CovidData.Api\CovidData.Api.csproj", "{BB2C3227-38A1-49F2-AE6A-A09A6C46CCD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
